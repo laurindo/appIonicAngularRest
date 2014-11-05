@@ -5,7 +5,7 @@ angular
         $scope.clockTemp = '00:00:00';
 
         $scope.startTask = function () {
-            console.log('inicializando...');
+            ClockDigital.start();
             $scope.clockTemp = ClockDigital;
         };
 
