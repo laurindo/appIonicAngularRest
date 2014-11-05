@@ -1,0 +1,23 @@
+<ion-view title="Phones">
+    <ion-content class="has-header" ng-controller="PhonesCtrl">
+        <input type="text" ng-model="idPhone" value="1"/>
+        <button ng-click="getPhoneById()">Get Phone by ID</button>
+        <button ng-click="getPhones()">Get Phones</button>
+        <button ng-click="savePhone()">Save Phone</button>
+        <button ng-click="deletePhone()">Delete Phone</button>
+
+        <ion-list ng-show="showPhones">
+            <h3>Lista de Phones</h3>
+            <ion-item ng-repeat="phone in phones"
+                      href="#/app/phones/{{phone.id}}">{{phone.title}}</ion-item>
+        </ion-list>
+
+        <ion-list ng-show="showPhoneById">
+            <h3>Phone {{phone.id}}</h3>
+            <p>Name: {{phone.speaker}}</p>
+        </ion-list>
+
+    </ion-content>
+
+
+</ion-view>
