@@ -12,7 +12,9 @@ angular.module('starter', [
     'starter.phonesCtrl',
     'starter.sessionsCtrl',
     'starter.sessionCtrl',
-    'starter.fruitsCtrl'
+    'starter.fruitsCtrl',
+    'starter.taskCtrl',
+    'starter.clockDigitalFactory'
   ])
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -85,6 +87,15 @@ angular.module('starter', [
             'menuContent' :{
               templateUrl: "templates/phones.html",
               controller: 'PhonesCtrl'
+            }
+          }
+        })
+        .state('app.tasks', {
+          url: "/tasks",
+          views: {
+            'menuContent' :{
+              templateUrl: "templates/tasks.html",
+              controller: 'TasksCtrl'
             }
           }
         });
