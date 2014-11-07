@@ -6,8 +6,9 @@
 
         <div class="item item-button-right">
             <div style="font-size: 2em;">{{clockTemp}}</div>
-            <input type="text" placeholder="Search">
-            <button class="button button-positive" ng-click="startTask()">Start</button>
+            <input type="text" placeholder="Descrição da sua tarefa">
+            <button class="button button-positive" ng-show="statusButton == 1" ng-click="startTask()">Start</button>
+            <button class="button button-assertive" ng-show="statusButton == 0" ng-click="stopTask()">Stop</button>
         </div>
 
         <ion-list>

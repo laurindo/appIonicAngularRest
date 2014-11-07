@@ -4,6 +4,8 @@ angular
 
         var mytimeout;
 
+        $scope.statusButton = 1; //start = 1 / stop = 0
+
         $scope.counter = $scope.counter;
         $scope.date    = new Date();
         $scope.days    = 0;
@@ -47,10 +49,12 @@ angular
 
         $scope.startTask = function () {
             mytimeout = $timeout($scope.onTimeout,1000);
+            $scope.statusButton = 0;
         };
 
         $scope.stopTask = function () {
-            clearInterval(mytimeout);
+            $timeout.cancel(mytimeout);
+            $scope.statusButton = 1;
         };
 
     });
