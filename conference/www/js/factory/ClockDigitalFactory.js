@@ -2,25 +2,33 @@ angular
     .module('starter.clockDigitalFactory', [])
     .factory('ClockDigital', function () {
 
-        var interval = null;
-        var clockTime = null;
-        var obj  = {
-            interval: setInterval(updateClocks, 1000),
-            clockTime: clockTime,
-            start: startTimer
-        };
+        var obj = {};
+        var timerId; // current timer if started
 
-        function startTimer() {
-            obj.interval = setInterval(updateClocks, 1000);
+        function clockStart() {
+            if (timerId) return;
+            timerId = setInterval(update, 1000);
+            update();
         }
 
-        function updateClocks() {
-            var now = new Date();
-            var h = now.getHours() % 12;
-            var m = now.getMinutes();
-            var s = now.getSeconds();
+        function clockStop() {
+            clearInterval(timerId);
+            timerId = null;
+        }
 
-            clockTime = "99:99"; // Second
+        function update() {
+            var date = new Date();
+            var hours = date.getHours();
+
+            if (hours < 10) hours = '0'+hours;
+
+            var minutes = date.getMinutes();
+            if (minutes < 10) minutes = '0'+minutes;
+
+            var seconds = date.getSeconds();
+            if (seconds < 10) seconds = '0'+seconds;
+
+            return hours + ":" + minutes + ":" + seconds;
         }
 
         return obj;
